@@ -13,7 +13,7 @@ import java.util.List;
 
 @Tag(name = "Suppliers", description = "The Supplier API")
 @RestController
-@RequestMapping("/api/oneup/v1/suppliers")
+@RequestMapping("/api/smart/v1/suppliers")
 public class SupplierController {
 
     private final SupplierService supplierService;
