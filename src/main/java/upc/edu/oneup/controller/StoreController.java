@@ -17,7 +17,7 @@ import java.util.List;
 
 @Tag(name = "Stores", description = "The Store API")
 @RestController
-@RequestMapping("/api/oneup/v1/stores")
+@RequestMapping("/api/smart/v1/stores")
 public class StoreController {
 
     private final StoreService storeService;
