@@ -40,7 +40,7 @@ public class Product {
     @Column(name = "availability", nullable = false, length = 50)
     private String availability;
 
-    @Column(name = "product_image_url", nullable = false, length = 500000)
+    @Column(name = "product_image_url", nullable = false, length = 50000)
     private String productImageUrl;
 
 
