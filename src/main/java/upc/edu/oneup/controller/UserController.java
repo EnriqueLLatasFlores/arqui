@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Tag(name = "Users", description = "The User API")
 @RestController
-@RequestMapping("/api/oneup/v1/users")
+@RequestMapping("/api/smart/v1/users")
 public class UserController {
 
     private final UserService userService;
@@ -27,7 +27,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Endpoint: POST /api/oneup/v1/users/authenticate
+    // Endpoint: POST /api/smart/v1/users/authenticate
     // Autenticación de usuario
     @PostMapping("/authenticate")
     public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> credentials) {
@@ -47,7 +47,7 @@ public class UserController {
         }
     }
 
-    // Endpoint: GET /api/oneup/v1/users
+    // Endpoint: GET /api/smart/v1/users
     // Obtiene todos los usuarios
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
@@ -55,7 +55,7 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    // Endpoint: GET /api/oneup/v1/users/username/{username}
+    // Endpoint: GET /api/smart/v1/users/username/{username}
     // Obtiene un usuario por su username
     @GetMapping("/username/{username}")
     public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
@@ -63,7 +63,7 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    // Endpoint: POST /api/oneup/v1/users
+    // Endpoint: POST /api/smart/v1/users
     // Crea un nuevo usuario
     @PostMapping
     @Transactional
@@ -73,7 +73,7 @@ public class UserController {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
-    // Endpoint: PUT /api/oneup/v1/users/username/{username}
+    // Endpoint: PUT /api/smart/v1/users/username/{username}
     // Actualiza un usuario existente por su username
     @PutMapping("/username/{username}")
     @Transactional
@@ -83,7 +83,7 @@ public class UserController {
         return new ResponseEntity<>(updated, HttpStatus.OK);
     }
 
-    // Endpoint: DELETE /api/oneup/v1/users/{id}
+    // Endpoint: DELETE /api/smart/v1/users/{id}
     // Elimina un usuario por ID
     @DeleteMapping("/{id}")
     @Transactional
