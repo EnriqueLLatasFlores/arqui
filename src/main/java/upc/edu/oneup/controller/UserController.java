@@ -18,7 +18,7 @@ import java.util.Map;
 @Tag(name = "Users", description = "The User API")
 @RestController
 @RequestMapping("/api/smart/v1/users")
-@CrossOrigin(origins = "https://elegant-love-production.up.railway.app","*") // Permite solicitudes desde el dominio de producción
+@CrossOrigin(origins = "*") // Permite solicitudes desde el dominio de producción
 public class UserController {
 
     private final UserService userService;
