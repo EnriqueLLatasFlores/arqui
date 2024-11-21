@@ -66,6 +66,7 @@ public class UserController {
 
     // Endpoint: POST /api/smart/v1/users
     // Crea un nuevo usuario
+    @CrossOrigin(origins = "*") 
     @PostMapping
     @Transactional
     public ResponseEntity<User> createUser(@RequestBody User user) {
