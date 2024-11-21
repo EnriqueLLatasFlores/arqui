@@ -13,10 +13,11 @@ public class WebConfig implements WebMvcConfigurer {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**") // Permite todas las rutas
-                        .allowedOrigins("*","http://localhost:5173","**") // Permite todos los orígenes
-                        .allowedMethods("GET", "POST", "PUT", "DELETE") // Permite estos métodos
-                        .allowedHeaders("*"); // Permite todos los encabezados
+                registry.addMapping("/**")  // Permite todas las rutas
+                        .allowedOrigins("http://localhost:5173", "https://charming-purpose-production.up.railway.app") // Orígenes permitidos
+                        .allowedMethods("GET", "POST", "PUT", "DELETE") // Métodos permitidos
+                        .allowedHeaders("*") // Encabezados permitidos
+                        .allowedCredentials(true); // Permite credenciales como cookies y cabeceras de autenticación
             }
         };
     }
