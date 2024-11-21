@@ -18,7 +18,6 @@ import java.util.Map;
 @Tag(name = "Users", description = "The User API")
 @RestController
 @RequestMapping("/api/smart/v1/users")
-
 public class UserController {
 
     private final UserService userService;
@@ -28,9 +27,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Endpoint: POST /api/smart/v1/users/authenticate
+    // Endpoint: POST /api/oneup/v1/users/authenticate
     // Autenticación de usuario
-
     @PostMapping("/authenticate")
     public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> credentials) {
         String username = credentials.get("username");
@@ -39,26 +37,26 @@ public class UserController {
         User user = userService.getUserByUsernameAndPassword(username, password);
 
         if (user != null) {
+            // Generación de JWT (esto es solo un ejemplo, necesitas implementar el JWT)
+            String jwtToken = generateJwtToken(user); // Implementa esta función según tu lógica de autenticación
+
             Map<String, String> response = new HashMap<>();
-            response.put("id", String.valueOf(user.getId()));
-            response.put("username", user.getUsername());
-            response.put("email", user.getEmail());
+            response.put("token", jwtToken); // Se devuelve el token en lugar de los datos del usuario
             return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
     }
 
-    // Endpoint: GET /api/smart/v1/users
+    // Endpoint: GET /api/oneup/v1/users
     // Obtiene todos los usuarios
- 
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    // Endpoint: GET /api/smart/v1/users/username/{username}
+    // Endpoint: GET /api/oneup/v1/users/username/{username}
     // Obtiene un usuario por su username
     @GetMapping("/username/{username}")
     public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
@@ -66,9 +64,8 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    // Endpoint: POST /api/smart/v1/users
+    // Endpoint: POST /api/oneup/v1/users
     // Crea un nuevo usuario
-
     @PostMapping
     @Transactional
     public ResponseEntity<User> createUser(@RequestBody User user) {
@@ -77,7 +74,7 @@ public class UserController {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
-    // Endpoint: PUT /api/smart/v1/users/username/{username}
+    // Endpoint: PUT /api/oneup/v1/users/username/{username}
     // Actualiza un usuario existente por su username
     @PutMapping("/username/{username}")
     @Transactional
@@ -87,7 +84,7 @@ public class UserController {
         return new ResponseEntity<>(updated, HttpStatus.OK);
     }
 
-    // Endpoint: DELETE /api/smart/v1/users/{id}
+    // Endpoint: DELETE /api/oneup/v1/users/{id}
     // Elimina un usuario por ID
     @DeleteMapping("/{id}")
     @Transactional
@@ -118,5 +115,11 @@ public class UserController {
         if (userService.isUsernameTaken(user.getUsername())) {
             throw new ValidationException("Username is already taken");
         }
+    }
+
+    // Método de ejemplo para generar un JWT (debes implementarlo según tu lógica de autenticación)
+    private String generateJwtToken(User user) {
+        // Implementa la lógica para generar el token JWT
+        return "example.jwt.token"; // Retorna un token de ejemplo
     }
 }
