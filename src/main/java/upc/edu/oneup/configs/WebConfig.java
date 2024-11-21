@@ -14,10 +14,9 @@ public class WebConfig implements WebMvcConfigurer {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Permite todas las rutas
-                        .allowedOrigins("http://charming-purpose-production.up.railway.app") // Permite el origen de producción
-                        .allowedMethods("GET", "POST", "PUT", "DELETE") // Métodos permitidos
-                        .allowedHeaders("*") // Permite todos los encabezados
-                        .allowCredentials(true); // Permite enviar cookies o credenciales
+                        .allowedOrigins("*","http://localhost:5173","**") // Permite todos los orígenes
+                        .allowedMethods("GET", "POST", "PUT", "DELETE") // Permite estos métodos
+                        .allowedHeaders("*"); // Permite todos los encabezados
             }
         };
     }
