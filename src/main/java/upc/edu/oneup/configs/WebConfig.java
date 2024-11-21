@@ -17,7 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
                 registry.addMapping("/**")
                         .allowedOrigins(
                                 "https://smartupc.up.railway.app" // Origen de producción
-                                "http://smartupc.up.railway.app"
+                     
                                 // Agregar más orígenes si es necesario (por ejemplo, en desarrollo)
                                 // "http://localhost:4200" // Solo si lo necesitas en desarrollo
                         )
