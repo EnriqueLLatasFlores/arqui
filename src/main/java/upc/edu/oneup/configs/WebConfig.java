@@ -14,7 +14,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Permite todos los endpoints
-                        .allowedOrigins("elegant-love-production.up.railway.app") // Permite todas las URLs de origen
+                        .allowedOrigins("https://elegant-love-production.up.railway.app") // Permite todas las URLs de origen
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
