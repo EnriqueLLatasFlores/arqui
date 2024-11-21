@@ -13,12 +13,11 @@ public class WebConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**") // Permitir todos los endpoints
-                        .allowedOrigins("https://elegant-love-production.up.railway.app") // Origen permitido
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Métodos HTTP permitidos
-                        .allowedHeaders("*") // Permitir todos los encabezados
-                        .exposedHeaders("Authorization", "Content-Type") // Exponer encabezados específicos al cliente
-                        .allowCredentials(true); // Habilitar el uso de credenciales (cookies o tokens)
+                registry.addMapping("/**")
+                        .allowedOrigins("*") // Asegúrate de cambiar esto a tu dominio en producción
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(false);
             }
         };
     }
