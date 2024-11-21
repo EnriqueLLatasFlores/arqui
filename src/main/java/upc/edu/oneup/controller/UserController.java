@@ -30,6 +30,7 @@ public class UserController {
 
     // Endpoint: POST /api/smart/v1/users/authenticate
     // Autenticación de usuario
+    @CrossOrigin(origins = "https://elegant-love-production.up.railway.app") 
     @PostMapping("/authenticate")
     public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> credentials) {
         String username = credentials.get("username");
@@ -50,6 +51,7 @@ public class UserController {
 
     // Endpoint: GET /api/smart/v1/users
     // Obtiene todos los usuarios
+   @CrossOrigin(origins = "https://elegant-love-production.up.railway.app")     
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
@@ -66,7 +68,7 @@ public class UserController {
 
     // Endpoint: POST /api/smart/v1/users
     // Crea un nuevo usuario
-    @CrossOrigin(origins = "*") 
+    @CrossOrigin(origins = "https://elegant-love-production.up.railway.app") 
     @PostMapping
     @Transactional
     public ResponseEntity<User> createUser(@RequestBody User user) {
